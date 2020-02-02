@@ -9,5 +9,11 @@ const ping = (url) => {
   } catch (err) {
     console.log(err);
   }
-
 }
+
+chrome.runtime.onMessage.addListener(
+  async function(request, sender, callback) {
+    console.log(request);
+    ping(request.href);
+  }
+);

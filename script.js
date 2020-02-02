@@ -16,7 +16,7 @@ var atags = document.getElementsByTagName("a");
 var hrefs = [];
 for (let index = 0; index < atags.length; index++) {
   href = atags.item(index).href;
-  ping(href);
+  chrome.runtime.sendMessage({href});
   hrefs.push(atags.item(index).href);
 };
 
