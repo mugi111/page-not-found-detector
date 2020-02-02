@@ -9,6 +9,7 @@
         "css": ["style.css"]
     }],
     "background": {
+        "persistent": true,
         "scripts": ["background.js"]
     },
     "browser_action": {
@@ -17,6 +18,7 @@
     },
     "permissions": [
         "tabs",
+        "webNavigation",
         "background",
         "http://*/*",
         "https://*/*"

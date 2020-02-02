@@ -11,9 +11,6 @@ const ping = (url) => {
   }
 }
 
-chrome.runtime.onMessage.addListener(
-  async function(request, sender, callback) {
-    console.log(request);
-    ping(request.href);
-  }
-);
+chrome.webNavigation.onCommitted.addListener(function(details) {
+  console.log(details.url); 
+}, {});
