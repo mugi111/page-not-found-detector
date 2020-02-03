@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "404 detector",
+    "name": "404 DETECTOR",
     "description": "",
-    "version": "0.0.8",
+    "version": "1.0.0",
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*" ],
         "js": ["script.js"],
