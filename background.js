@@ -5,12 +5,19 @@ const ping = (url) => {
 
   xhr.open("GET", url, true);
   try {
-    xhr.send(null);
+    xhr.onload = function () {
+      console.log(xhr.status);
+      return xhr.status;
+    }
+    xhr.send();
   } catch (err) {
     console.log(err);
   }
 }
 
 chrome.webNavigation.onCommitted.addListener(function(details) {
-  console.log(details.url); 
-}, {});
+  if (details.frameId !== 0){
+    return;
+  }
+  ping(details.url);
+}, {url: [{urlMatches: "http://*/*"}, {urlMatches: "https://*/*"}]});
