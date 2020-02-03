@@ -19,7 +19,7 @@ chrome.webNavigation.onCommitted.addListener((details) => {
   }
   const status = ping(details.url);
   console.log(status);
-  if(status !== 404) {
+  if(status === 404) {
     chrome.tabs.goBack(details.tabId);
   }
 }, {url: [{urlMatches: "http://*/*"}, {urlMatches: "https://*/*"}]});
