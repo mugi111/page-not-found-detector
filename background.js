@@ -3,21 +3,20 @@ const ping = (url) => {
 
   xhr.onreadystatechange = () =>{};
 
-  xhr.open("GET", url, true);
+  xhr.open("GET", url, false);
   try {
-    xhr.onload = function () {
-      console.log(xhr.status);
-      return xhr.status;
-    }
+    xhr.onload = function () {}
     xhr.send();
+    return xhr.status;
   } catch (err) {
     console.log(err);
   }
 }
 
-chrome.webNavigation.onCommitted.addListener(function(details) {
+chrome.webNavigation.onCommitted.addListener((details) => {
   if (details.frameId !== 0){
     return;
   }
-  ping(details.url);
+  const status = ping(details.url);
+  console.log(status);
 }, {url: [{urlMatches: "http://*/*"}, {urlMatches: "https://*/*"}]});
