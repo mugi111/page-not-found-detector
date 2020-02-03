@@ -9,7 +9,7 @@ const ping = (url) => {
     xhr.send();
     return xhr.status;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
